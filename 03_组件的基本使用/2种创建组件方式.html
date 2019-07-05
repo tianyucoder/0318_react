@@ -37,9 +37,12 @@
     //如下代码：会让react自动触发与组件标签同名的工厂函数调用。
     ReactDOM.render(<MyComponent/>,document.getElementById('example1'))
     
-    //如下代码：会让react自动调用组件类，生成一个组件的实例对象，随后调用其身上的render方法
+    //如下代码：会让react自动使用new关键字调用组件类，生成一个组件的实例对象，随后调用其身上的render方法
     ReactDOM.render(<MyComponent2/>,document.getElementById('example2'))
     
+    /*
+    * 我们经常说的【组件实例对象】也简称为【组件对象】
+    * */
     
   </script>
 
