@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>01_HelloReact</title>
+</head>
+<body>
+<div id="test"></div>
+
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react专门用于操作DOM的js-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+<script type="text/babel">//用于将jsx代码转换为原生js语法
+  //1.创建一个虚拟DOM
+  let vDOM = <h2>hello,react</h2> //注意！！！！这里没有单引号，是jsx语法
+  
+  //2.渲染虚拟DOM到页面
+  ReactDOM.render(vDOM,document.getElementById('test'))
+  
+</script>
+
+</body>
+</html>
