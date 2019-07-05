@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>2种创建组件方式</title>
+</head>
+<body>
+
+  <div id="example1"></div>
+  <div id="example2"></div>
+
+  <!--引入react核心库-->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!--引入操作react操作DOM库-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!--引入babel-->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <script type="text/babel">
+    //第一种定义组件的方式：工厂函数式
+    function MyComponent() {
+      //console.log(this)//此处的this是undefined，因为经过babel编译后，开起了严格模式。
+      return <h2>工厂函数组件(无状态/简单组件)</h2>
+    }
+    
+    //第一种定义组件的方式：使用ES6类的方式定义组件
+    class MyComponent2 extends React.Component{
+      
+      //重写父类的render
+      render(){
+        console.log(this)
+        return <h2>ES6类组件(有状态/复杂组件)</h2>
+      }
+    }
+    
+    //渲染组件标签到页面
+    //如下代码：会让react自动触发与组件标签同名的工厂函数调用。
+    ReactDOM.render(<MyComponent/>,document.getElementById('example1'))
+    
+    //如下代码：会让react自动调用组件类，生成一个组件的实例对象，随后调用其身上的render方法
+    ReactDOM.render(<MyComponent2/>,document.getElementById('example2'))
+    
+    
+  </script>
+
+
+
+  
+</body>
+</html>
