@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>state</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入操作react操作DOM库-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+  /*
+  * 需求：
+  *   1.默认显示：“今天天气很炎热”
+  *   2.点击显示：“今天天气很凉爽”
+  *   3.再次点击：“今天天气很炎热”
+  *   ...
+  * */
+  
+  //1.定义组件
+  class Weather extends React.Component{
+    constructor(props){
+      super(props)
+      this.state = {isHot:true}
+      this.clickHandler = this.clickHandler.bind(this)
+    }
+
+    clickHandler(){
+      let {isHot} = this.state
+      let {haha} = this.state
+      isHot = !isHot
+      //1.状态不可以直接更新  2.状态不可以直接修改
+      //更新状态时，必须使用setState方法，否则react不能“监听”到
+      this.setState({isHot})
+      
+    }
+    /*
+    * 如果使用ES6这种形式定义组件，那么react底层将所有程序员自定义的方法中的this全部改为了undefined
+    * */
+    
+    //重写从父类继承过来的render
+    render(){
+      let {isHot} = this.state
+      return <h1 onClick={this.clickHandler}>今天天气很{isHot?'炎热':'凉爽'}</h1>
+    }
+  }
+  
+  //2.渲染组件标签到页面
+  ReactDOM.render(<Weather/>,document.getElementById('example'))
+  
+  
+  
+  
+  
+</script>
+
+</body>
+</html>
+
