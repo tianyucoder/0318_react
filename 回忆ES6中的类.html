@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h1 onclick="demo()">123</h1>
+
+<script type="text/javascript">
+  
+  function demo() {
+    alert(1)
+  }
+
+  /*
+   1.在ES6的类中默认开启了严格模式，类中函数的this默认是undefined。
+   
+   2.constructor中的this是当前类的实例对象。
+   
+   3.若A类继承了B类，则在A类constructor中的super方法是帮我们调用父类的构造器。
+   
+   4.类中的代码都是赋值语句，例如在类中写了 a = b ，则该类的实例对象上有a属性，值为b。
+   
+   5.let、const定义的变量，并没有直接作为window的属性
+   
+  */
+  
+  class Person {
+    constructor(name,age){
+      this.name = name
+      this.age = age
+    }
+    speak(){
+      console.log(this.name,this.age)
+    }
+  }
+  
+  /*class Student extends Person{
+    constructor(name,age,grade){
+      super(name,age)
+      this.grade = grade
+    }
+    speak(){
+      console.log(this.name,this.age,this.grade)
+    }
+    study(){
+      console.log(this.name,'我正在学习')
+    }
+  }*/
+  
+//  let stu = new Student('kobe',18,6)
+  let p1 = new Person('wade',18)
+  console.log(p1)
+//  let {speak} = p1
+//  speak()
+  
+  //Person类的实例对象
+  //Person对象
+  //实例对象
+
+
+  let p2 = {
+    name:'lisi',
+    age:8,
+    sex:'男'
+  }
+  
+  let arr = [1,2,3]
+  
+  let a = {...p2}
+  let b = [...arr]
+  console.log(a)
+  console.log(b)
+  
+  
+  
+  
+  
+</script>
+
+</body>
+</html>
