@@ -15,6 +15,58 @@
 <!--引入babel-->
 <script type="text/javascript" src="../js/babel.min.js"></script>
 
+<script type="text/babel">
+  
+  class App extends React.Component{
+    
+    state = {todos:['吃饭','睡觉','打代码','想念许老师']}
+    
+    render(){
+      let {todos} = this.state
+      return (
+        <div>
+          <h1>Simple TODO List</h1>
+          <Add/>
+          <List todos={todos}/>
+        </div>
+      )
+    }
+  }
+
+  class Add extends React.Component{
+    
+    add = ()=>{
+       //1.获取用户的输入
+      //2.将用户的输入，追加到todos数组中
+      
+    }
+    
+    render(){
+      return (
+        <div>
+          <input type="text"/>
+          <button onClick={this.add}>Add#3</button>
+        </div>
+      )
+    }
+  }
+
+  class List extends React.Component{
+    render(){
+      let {todos} = this.props
+      return (
+        <ul>
+          {todos.map((item,index)=>{
+              return <li key={index}>{item}</li>
+          })}
+        </ul>
+      )
+    }
+  }
+  
+  ReactDOM.render(<App/>,document.getElementById('example'))
+  
+</script>
 
 </body>
 </html>

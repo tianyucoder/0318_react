@@ -15,6 +15,35 @@
 <!--引入babel-->
 <script type="text/javascript" src="../js/babel.min.js"></script>
 
+<script type="text/babel">
+
+  //定义组件
+  class UserInput extends React.Component{
+    
+    haha = React.createRef() //创建一个承装ref的容器（对象），这个容器是“专用的”，只能保存一个ref
+
+    clickHandler = ()=>{
+      alert(this.haha.current.value)
+    }
+
+    onBlurHandler = (event)=>{
+      alert(event.target.value)
+    }
+
+    render(){
+      return(
+        <div>
+          <input type="text" ref={this.haha}/>&nbsp;
+          <button onClick={this.clickHandler}>点我提示</button>&nbsp;
+          <input type="text" onBlur={this.onBlurHandler}/>&nbsp;
+        </div>
+      )
+    }
+  }
+
+  //渲染组件标签
+  ReactDOM.render(<UserInput/> , document.getElementById('example'))
+</script>
 
 </body>
 </html>
