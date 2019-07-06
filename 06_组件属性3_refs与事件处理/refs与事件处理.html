@@ -17,6 +17,31 @@
 
   <script type="text/babel">
   
+    //定义组件
+    class UserInput extends React.Component{
+
+      clickHandler = ()=>{
+        let {input1} =  this.refs
+        alert(input1.value)
+      }
+
+      onBlurHandler = (event)=>{
+         alert(event.target.value)
+      }
+      
+      render(){
+        return(
+          <div>
+            <input type="text" ref="input1"/>&nbsp;
+            <button onClick={this.clickHandler}>点我提示</button>&nbsp;
+            <input type="text" onBlur={this.onBlurHandler}/>&nbsp;
+          </div>
+        )
+      }
+    }
+    
+    //渲染组件标签
+    ReactDOM.render(<UserInput/> , document.getElementById('example'))
   </script>
 
 </body>

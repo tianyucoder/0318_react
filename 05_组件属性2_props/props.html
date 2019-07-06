@@ -15,20 +15,35 @@
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
 <!--引入babel-->
 <script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入限制参数类型以及必要性的库-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
 
 <script type="text/babel">
 
   /*
    需求: 自定义用来显示一个人员信息的组件，包含：姓名、年龄、性别三个信息
-      1). 姓名
-      2). 性别
-      3). 年龄
+      1). 姓名,必填项，字符串
+      2). 性别，必填项，字符串
+      3). 年龄，默认值18，数字
   */
   
   //1.定义组件
   class Person extends React.Component{
+
+    //限制传参的类型
+    static propTypes = {
+      name: PropTypes.string.isRequired,
+      sex: PropTypes.string.isRequired,
+      age: PropTypes.number
+    }
+
+    //设置默认值
+    static defaultProps = {
+      age:18
+    }
     
     render(){
+      //this.props.name = 'haha' //只读不能修改
       let {name,age,sex} = this.props
       return (
         <div>
@@ -43,15 +58,32 @@
     }
   }
   
+  //2.用工厂函数定义组件
+  /*  function Person(props) {
+    let {name,age,sex} = props
+    return (
+      <div>
+        <ul>
+          <li>姓名：{name}</li>
+          <li>年龄：{age+1}</li>
+          <li>性别：{sex}</li>
+        </ul>
+        <hr/>
+      </div>
+    )
+  }*/
+  
+  
+  
   let p1 = {
     name:'张三',
-    age:29,
+    age:19,
     sex:'女'
   }
 
   let p2 = {
     name:'lisi',
-    age:'8',
+    age:19,
     sex:'男'
   }
   
