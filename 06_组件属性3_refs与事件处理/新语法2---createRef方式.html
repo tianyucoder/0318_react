@@ -21,9 +21,11 @@
   class UserInput extends React.Component{
     
     haha = React.createRef() //创建一个承装ref的容器（对象），这个容器是“专用的”，只能保存一个ref
+    haha2 = React.createRef() //创建一个承装ref的容器（对象），这个容器是“专用的”，只能保存一个ref
 
     clickHandler = ()=>{
       alert(this.haha.current.value)
+      console.log(this.haha2.current.value)
     }
 
     onBlurHandler = (event)=>{
