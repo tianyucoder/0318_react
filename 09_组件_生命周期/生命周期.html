@@ -23,7 +23,7 @@
         触发条件：ReactDOM.render(<MyComponent/>)
           constructor()
           componentWillMount()
-          render():提供虚拟DOM，可能会调用多次。
+          render():提供虚拟DOM，可能会调用多次(1+n)。
           componentDidMount()：启动定时器、发送Ajax请求、只执行一次。
           
     2.【更新】
@@ -36,7 +36,58 @@
         触发条件：ReactDOM.unmountComponentAtNode()
         componentWillUnmount()：收尾工作，例如：清除定时器，只执行一次。
   */
+  class Life extends React.Component{
+    
+    state = {opacity:1}
+
+    componentWillMount(){
+      console.log('componentWillMount')
+    }
+    
+    componentWillUnmount(){
+      console.log('componentWillUnmount')
+      clearInterval(this.timeId)
+    }
+
+    componentDidUpdate(){
+      console.log('componentDidUpdate')
+    }
+
+    death =()=>{
+      ReactDOM.unmountComponentAtNode(document.getElementById('example'))
+    }
+    
+    render(){
+      console.log('render')
+      let {opacity} = this.state
+      return(
+        <div>
+          <h2 style={{opacity}}>react学不会怎么办？</h2>
+          <button onClick={this.death}>不活了</button>
+        </div>
+      )
+    }
+
+    //组件已经被挂载
+    componentDidMount(){
+      console.log('componentDidMount')
+      let {opacity} = this.state
+      this.timeId = setInterval(()=> {
+        opacity -= 0.1
+        if(opacity <= 0){
+          opacity = 1
+        }
+        this.setState({opacity})
+      },200)
+    }
+
+    componentWillUpdate(){
+      console.log('componentWillUpdate')
+    }
+  }
   
+  ReactDOM.render(<Life/>,document.getElementById('example'))
+
 
 </script>
 </body>

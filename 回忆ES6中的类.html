@@ -32,12 +32,16 @@
       this.name = name
       this.age = age
     }
+    
     speak(){
       console.log(this.name,this.age)
     }
   }
   
-  class Student extends Person{
+  let p = new Person('kobe',18)
+  console.log(p)
+  
+  /*class Student extends Person{
     constructor(name,age,grade){
       super(name,age)
       this.grade = grade
@@ -54,7 +58,7 @@
   let p1 = new Person('wade',18)
   console.log(p1)
   let {speak} = p1
-  speak()
+  speak()*/
   
   //Person类的实例对象
   //Person对象

@@ -19,8 +19,9 @@
 
 <script type="text/babel">
   
+  //定义App组件
   class App extends React.Component{
-    
+    //定义App状态
     state = {todos:['吃饭','睡觉','打代码','想念许老师']}
     
     //状态在哪里，更新状态的方法就在哪里
@@ -53,12 +54,13 @@
       addTodos:PropTypes.func.isRequired
     }
     
-    //添加方法
+    //添加方法---Add的
     add = ()=>{
+      //通过传参获取App组件内，用于更新状态的方法
       let {addTodos} = this.props
       //1.获取用户的输入
       let userInput = this.thing.value.trim()
-      //2.将用户的输入，追加到todos数组中
+      //2.将用户的输入，追加到todos数组中,随后更新状态
       addTodos(userInput)
       //3.清空用户的输入
       this.thing.value = ''
@@ -98,7 +100,6 @@
   }
   
   ReactDOM.render(<App/>,document.getElementById('example'))
-  
 </script>
 
 </body>
