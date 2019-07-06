@@ -38,21 +38,10 @@
   */
   class Life extends React.Component{
     
+    //定义状态
     state = {opacity:1}
-
-    componentWillMount(){
-      console.log('componentWillMount')
-    }
     
-    componentWillUnmount(){
-      console.log('componentWillUnmount')
-      clearInterval(this.timeId)
-    }
-
-    componentDidUpdate(){
-      console.log('componentDidUpdate')
-    }
-
+    //点击“不活了”按钮的回调
     death =()=>{
       ReactDOM.unmountComponentAtNode(document.getElementById('example'))
     }
@@ -68,7 +57,12 @@
       )
     }
 
-    //组件已经被挂载
+    //组件将要被挂载时---触发该回调函数执行
+    componentWillMount(){
+      console.log('componentWillMount')
+    }
+    
+    //组件已经被挂载到页面时--触发该回调函数执行
     componentDidMount(){
       console.log('componentDidMount')
       let {opacity} = this.state
@@ -80,14 +74,26 @@
         this.setState({opacity})
       },200)
     }
-
+    
+    //组件将要更新时----触发该回调函数执行
     componentWillUpdate(){
       console.log('componentWillUpdate')
     }
+    
+    //组件已经更新完毕时----触发该回调函数执行
+    componentDidUpdate(){
+      console.log('componentDidUpdate')
+    }
+    
+    //组件将要被卸载时 ----触发该回调函数执行
+    componentWillUnmount(){
+      console.log('componentWillUnmount')
+      clearInterval(this.timeId)
+    }
   }
   
+  //渲染组件标签到页面
   ReactDOM.render(<Life/>,document.getElementById('example'))
-
 
 </script>
 </body>
