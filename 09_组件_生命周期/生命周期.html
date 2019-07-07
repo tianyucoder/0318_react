@@ -62,7 +62,7 @@
       console.log('componentWillMount')
     }
     
-    //组件已经被挂载到页面时--触发该回调函数执行
+    //组件被挂载到页面时--触发该回调函数执行
     componentDidMount(){
       console.log('componentDidMount')
       let {opacity} = this.state
@@ -81,7 +81,7 @@
     }
     
     //组件已经更新完毕时----触发该回调函数执行
-    componentDidUpdate(){
+    componentDidUpdate=()=>{
       console.log('componentDidUpdate')
     }
     
