@@ -20,7 +20,7 @@
   //定义组件
   class UserInput extends React.Component{
     
-    haha = React.createRef() //创建一个承装ref的容器（对象），这个容器是“专用的”，只能保存一个ref
+    myRef = React.createRef() //创建一个承装ref的容器（对象），这个容器是“专用的”，只能保存一个ref
 
     clickHandler = ()=>{
       alert(this.haha.current.value)
@@ -33,7 +33,7 @@
     render(){
       return(
         <div>
-          <input type="text" ref={this.haha}/>&nbsp;
+          <input type="text" ref={this.myRef}/>&nbsp;
           <button onClick={this.clickHandler}>点我提示</button>&nbsp;
           <input type="text" onBlur={this.onBlurHandler}/>&nbsp;
         </div>
